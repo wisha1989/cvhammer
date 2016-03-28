@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>VerifyServlet</servlet-name>
+    <servlet-class>servlet.VerifyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>servlet.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>LogoffServlet</servlet-name>
+    <servlet-class>servlet.LogoffServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ECannyServlet</servlet-name>
+    <servlet-class>servlet.ECannyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ESketchRecognitionServlet</servlet-name>
+    <servlet-class>servlet.ESketchRecognitionServlet</servlet-class>
+        <init-param>
+            <param-name>timeout</param-name>
+            <param-value>30000</param-value>
+        </init-param>
+  </servlet>
+  
+   <servlet>  
+        <servlet-name>InitLogServlet</servlet-name>  
+        <servlet-class>servlet.InitLogServlet</servlet-class>  
+        <init-param>  
+            <param-name>log4j-properties-location</param-name>  
+            <param-value>/WEB-INF/classes/log4j.property</param-value>  
+        </init-param>  
+        <load-on-startup>1</load-on-startup>  
+    </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/DoLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VerifyServlet</servlet-name>
+    <url-pattern>/DoVerify</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/DoRegister</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoffServlet</servlet-name>
+    <url-pattern>/DoLogoff</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ECannyServlet</servlet-name>
+        <url-pattern>/DoECanny</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>ESketchRecognitionServlet</servlet-name>
+    <url-pattern>/DoESketchRecognition</url-pattern>
+  </servlet-mapping>
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filter.LoginFilter</filter-class>
+         <init-param>
+            <param-name>noLoginPaths</param-name>
+            <param-value>userLab.html;eInfo.jsp</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/expSub/userLab.jsp</url-pattern>
+        <servlet-name>ECannyServlet</servlet-name>
+        <servlet-name>ESketchRecognitionServlet</servlet-name>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>ESketchRetrieveServlet</servlet-name>
+        <servlet-class>servlet.ESketchRetrieveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ESketchRetrieveServlet</servlet-name>
+        <url-pattern>/DoESketchRetrieve</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EBilateralFilterServlet</servlet-name>
+        <servlet-class>servlet.EBilateralFilterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EBilateralFilterServlet</servlet-name>
+        <url-pattern>/DoEBilateralFilter</url-pattern>
+    </servlet-mapping>
+
+</web-app>
